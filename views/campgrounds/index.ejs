@@ -1,0 +1,30 @@
+<!-- all this content will be passed to the boilerplate template as body -->
+<% layout('layouts/boilerplate') %>
+<h1>All Campgrounds</h1>
+<div>
+    <a href="/campgrounds/new">Add Campgrounds</a>
+</div>
+<ul>
+    <% for (let campground of campgrounds) {%>
+    <div class="card" mb-3>
+        <!-- gives a bit of space between each card -->
+        <div class="row">
+            <div class="col-md-4">
+                <!-- after size medium and above it takes up 4 units out of 12 -->
+                <img class="img-fluid" src="<%= campground.image %> " alt="">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><%= campground.title %> </h5>
+                    <p class="card-text"><%= campground.description %></p>
+                    <p class="card-text">
+                        <small class="text-muted"><%= campground.location %></small>
+                    </p>
+                    <a class="btn btn-primary" href="/campgrounds/<%= campground._id %>">View
+                        <%= campground.title %></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+</ul>
